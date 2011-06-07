@@ -151,3 +151,17 @@ function jbase_preprocess_block(&$vars) {
     $vars['position'] = ($vars['position']) ? '' : 'last';
   }
 }
+
+
+/**
+ * Override or insert variables into the comment templates.
+ *
+ * @param $vars
+ *   An array of variables to pass to the theme template.
+ */
+function jbase_preprocess_comment(&$vars) {
+  // Add odd/even classes to comments classes_array 
+  static $comment_odd = TRUE;
+  $vars['classes_array'][] = $comment_odd ? 'odd' : 'even';
+  $comment_odd = !$comment_odd;
+}
