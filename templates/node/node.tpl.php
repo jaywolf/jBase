@@ -79,11 +79,15 @@
 ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <header>
-    <?php print render($title_prefix); ?>
     <?php if (!$page): ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <?php print render($title_prefix); ?>
+      <?php if ($title): ?>
+        <h2<?php print $title_attributes; ?>>
+          <a href="<?php print $node_url; ?>"><?php print $title; ?></a>
+        </h2>
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
     <?php endif; ?>
-    <?php print render($title_suffix); ?>
   
     <?php if ($display_submitted): ?>
       <div class="meta submitted">
@@ -102,11 +106,11 @@
     ?>
   </div>
   
-  <footer>
-    <?php if ($links = render($content['links'])): ?>
-    <nav class="clearfix"><?php print $links; ?></nav>
+  <?php if ($links = render($content['links'])): ?>
+    <footer class="clearfix">
+      <nav><?php print $links; ?></nav>
+    </footer>
   <?php endif; ?>
-  </footer>
   
   <?php print render($content['comments']); ?>
 </article> <!-- /node -->
