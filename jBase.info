@@ -1,5 +1,5 @@
-name = jBase
-description = Base theme for custom projects
+name = jBase HTML5
+description = HTML5 Base theme for custom projects
 version = 7.x-1.x-dev
 core = 7.x
 engine = phptemplate
