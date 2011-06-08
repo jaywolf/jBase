@@ -77,20 +77,21 @@
  * @see template_process()
  */
 ?>
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <header>
+    <?php print render($title_prefix); ?>
+    <?php if (!$page): ?>
+      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
   
-  <?php if ($display_submitted): ?>
-    <div class="meta submitted">
-      <?php print $user_picture; ?>
-      <?php print $submitted; ?>
-    </div>
-  <?php endif; ?>
+    <?php if ($display_submitted): ?>
+      <div class="meta submitted">
+        <?php print $user_picture; ?>
+        <?php print $submitted; ?>
+      </div>
+    <?php endif; ?>
+  </header>
 
   <div class="content"<?php print $content_attributes; ?>>
     <?php
@@ -101,7 +102,11 @@
     ?>
   </div>
   
-  <?php print render($content['links']); ?>
+  <footer>
+    <?php if ($links = render($content['links'])): ?>
+    <nav class="clearfix"><?php print $links; ?></nav>
+  <?php endif; ?>
+  </footer>
+  
   <?php print render($content['comments']); ?>
-
-</div> <!-- /node -->
+</article> <!-- /node -->
