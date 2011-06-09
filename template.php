@@ -127,11 +127,11 @@ function jbase_preprocess_node(&$vars) {
   
   // Add node-type-page template suggestion
   if ($vars['page']) {
-    $vars['theme_hook_suggestions'][] = 'node__'. $vars['node']->type .'-page';
-    $vars['theme_hook_suggestions'][] = 'node__'. $vars['node']->type .'-'. $vars['node']->nid .'-page';
+    $vars['theme_hook_suggestions'][] = 'node__'. $vars['node']->type .'_page';
+    $vars['theme_hook_suggestions'][] = 'node__'. $vars['node']->type .'-'. $vars['node']->nid .'_page';
   }
   else {
-    $vars['theme_hook_suggestions'][] = 'node__'. $vars['node']->type .'-teaser';
+    $vars['theme_hook_suggestions'][] = 'node__'. $vars['node']->type .'_teaser';
     $vars['theme_hook_suggestions'][] = 'node__'. $vars['node']->nid;
   }
 }
