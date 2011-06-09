@@ -183,6 +183,12 @@ function jbase_preprocess_block(&$vars) {
   if ($vars['block_id'] == count(block_list($block->region))) {
     $vars['position'] = ($vars['position']) ? '' : 'last';
   }
+  
+  // Add template suggestion for menu blocks
+  $nav_blocks = array('navigation', 'main-menu', 'management', 'user-menu');
+  if (in_array($vars['block']->delta, $nav_blocks)) {
+    $vars['theme_hook_suggestions'][] = 'block__menu';
+  }
 }
 
 

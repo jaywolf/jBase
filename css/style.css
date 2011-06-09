@@ -673,25 +673,14 @@ div.block-region {
   font-size: 1.333em;
 }
 
-div.block-wrapper {
+.block-wrapper {
   margin: 0 0 20px;
 }
 
-div.block .title {
+.block .title {
 }
 
-div.block .content {
-}
-
-div.block .submitted {
-}
-
-div.block .submitted a:link {
-}
-
-div.block .submitted a:visited,
-div.block .submitted a:hover,
-div.block .submitted a:active {
+.block .content {
 }
 
 /* user login block */
