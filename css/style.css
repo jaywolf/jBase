@@ -1373,32 +1373,39 @@ div.admin-required {
 
 /* Comments
 -------------------------------------------------------------- */
-div.comment {
+#comments { /* comment wrapper */
+}
+
+#comments h2.title {
+  border-bottom: 1px solid #bbb;
+}
+
+.comment {
   margin: 15px 0;
   padding: 10px;
 }
 
-h2.comments {
-  font-size: 1em;
-  font-weight: bold;
-  margin-bottom: 12px;
+.comment.even {
 }
 
-div.comment h3.title {
+.comment.odd {
+}
+
+.comment h3.title {
   font-weight: bold;
   margin: 0 0 5px 0;
 }
 
-div.comment h3.title a {
+.comment h3.title a {
 }
 
-div.comment .submitted {
+.comment .submitted {
 }
 
-div.comment .comment-name {
+.comment .comment-name {
 }
 
-div.comment.comment-preview {
+.comment.comment-preview {
   background-color: #FFFFE8;
   border: 1px solid #E8E8CC;
   padding: 10px;
@@ -1409,17 +1416,17 @@ div.comment.comment-preview {
   padding: 0 6px 0 0;
 }
 
-div.comment div.links a,
-div.comment ul.links a {
+.comment div.links a,
+.comment ul.links a {
   font-size: 0.9em;
   text-align: right;
 }
 
-div.comment .picture {
+.comment .picture {
   float: right;
 }
 
-.signature {
+.comment .signature {
   border-top: 1px solid #D6DDB9;
   font-size: 0.916em;
   margin: 10px 0;

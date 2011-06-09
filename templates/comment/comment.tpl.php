@@ -58,29 +58,31 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print $picture; ?>
-
-  <?php print render($title_prefix); ?>
-  <?php if ($title): ?>
-    <h3<?php print $title_attributes; ?>>
-      <?php print $title; ?>
-      <?php if ($new): ?>
-        <span class="new"><?php print $new; ?></span>
-      <?php endif; ?>
-    </h3>
-  <?php elseif ($new): ?>
-    <div class="new"><?php print $new; ?></div>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
-
-  <div class="submitted">
+<article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <header>
+    <?php print $picture; ?>
+    
+    <?php print render($title_prefix); ?>
+      <?php if ($title): ?>
+        <h3<?php print $title_attributes; ?>>
+          <?php print $title; ?>
+          <?php if ($new): ?>
+            <span class="new"><?php print $new; ?></span>
+          <?php endif; ?>
+        </h3>
+      <?php elseif ($new): ?>
+        <div class="new"><?php print $new; ?></div>
+      <?php endif; ?> 
+    <?php print render($title_suffix); ?>
+  </header>
+  
+  <footer class="submitted">
     <?php print $permalink; ?>
     <?php
-      print t('Submitted by !username on !datetime.',
-        array('!username' => $author, '!datetime' => $created));
+      print t('Submitted by !username on !datetime',
+      array('!username' => $author, '!datetime' => '<time datetime="' . $datetime . '">' . $created . '</time>'));
     ?>
-  </div>
+  </footer>
 
   <div class="content"<?php print $content_attributes; ?>>
     <?php
@@ -94,6 +96,8 @@
       </div>
     <?php endif; ?>
   </div>
-
-  <?php print render($content['links']) ?>
-</div> <!-- /comment -->
+  
+  <?php if ($links = render($content['links'])): ?>
+    <nav class="clearfix"><?php print $links; ?></nav>
+  <?php endif; ?>
+</article> <!-- /comment -->

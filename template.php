@@ -197,4 +197,7 @@ function jbase_preprocess_comment(&$vars) {
   static $comment_odd = TRUE;
   $vars['classes_array'][] = $comment_odd ? 'odd' : 'even';
   $comment_odd = !$comment_odd;
+  
+  // Utilize the time tag w/ pubdate attribute for comment submit date
+  $vars['datetime'] = format_date($vars['comment']->created, 'custom', 'c');
 }
