@@ -120,9 +120,24 @@ function jbase_preprocess_page(&$vars) {
  *   An array of variables to pass to the theme template.
  */
 function jbase_preprocess_node(&$vars) {
+  global $theme, $user;
   $vars['classes_array'][] = $vars['zebra'];
   if ($vars['view_mode'] == 'full') {
     $vars['classes_array'][] = 'node-full';
+  }
+  
+  // Utilize the time tag w/ pubdate attribute for node submit date
+  $vars['datetime'] = format_date($vars['created'], 'custom', 'c');
+  if (variable_get('node_submitted_' . $vars['node']->type, TRUE)) {
+    $vars['submitted'] = t('Submitted by !username on !datetime',
+      array(
+        '!username' => $vars['name'],
+        '!datetime' => '<time datetime="' . $vars['datetime'] . '" pubdate="pubdate">' . $vars['date'] . '</time>',
+      )
+    );
+  }
+  else {
+    $vars['submitted'] = '';
   }
   
   // Add node-type-page template suggestion

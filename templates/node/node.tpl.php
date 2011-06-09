@@ -82,20 +82,20 @@
     <?php if (!$page): ?>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
-        <h2<?php print $title_attributes; ?>>
+        <h2 class="node-title"<?php print $title_attributes; ?>>
           <a href="<?php print $node_url; ?>"><?php print $title; ?></a>
         </h2>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
     <?php endif; ?>
-  
-    <?php if ($display_submitted): ?>
-      <div class="meta submitted">
-        <?php print $user_picture; ?>
-        <?php print $submitted; ?>
-      </div>
-    <?php endif; ?>
   </header>
+  
+  <?php if ($display_submitted): ?>
+    <footer class="meta submitted">
+      <?php print $user_picture; ?>
+      <?php print $submitted; ?>
+    </footer>
+  <?php endif; ?>
 
   <div class="content"<?php print $content_attributes; ?>>
     <?php
@@ -107,9 +107,7 @@
   </div>
   
   <?php if ($links = render($content['links'])): ?>
-    <footer class="clearfix">
-      <nav><?php print $links; ?></nav>
-    </footer>
+    <nav class="clearfix"><?php print $links; ?></nav>
   <?php endif; ?>
   
   <?php print render($content['comments']); ?>

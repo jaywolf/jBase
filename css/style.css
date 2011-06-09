@@ -570,88 +570,84 @@ body.layout-first-main-second #sidebar-second {
 
 /* Nodes
 -------------------------------------------------------------- */
-div.node {
+.node {
   margin: 0 0 20px 0;
 }
 
-div.node .submitted,
-div.node .terms {
+.node .submitted,
+.node .terms {
   font-size: 12px;
 }
 
-div.node ul.links li,
-div.node ul.inline li {
+.node ul.links li,
+.node ul.inline li {
   padding-right: 6px;
 }
 
-div.node ul.links li.last {
+.node ul.links li.last {
   padding-right: 0;
 }
 
-div.node li.node-readmore,
-div.node .more-link,
-div.node .links {
+.node li.node-readmore,
+.node .more-link,
+.node .links {
 }
 
-div.node li.node-readmore {
+.node li.node-readmore {
 }
 
-div.node .submitted a:link,
-div.node .submitted a:visited {
+.node .submitted a:link,
+.node .submitted a:visited {
 }
 
-div.node .submitted a:visited,
-div.node .submitted a:hover,
-div.node .submitted a:active {
+.node .submitted a:visited,
+.node .submitted a:hover,
+.node .submitted a:active {
 }
 
-div.node div.meta {
+.node footer.meta {
   margin-bottom: 10px;
 }
 
-div.meta div.submitted {
-  display: inline;
-}
-
-div.node div.user-picture {
+.node div.user-picture {
   float: left;
-  margin: 0 20px 0 0;
+  margin: 6px 10px 0 0;;
 }
 
-div.node ul.links {
+.node ul.links {
   display: block;
   margin: 2px 0;
   overflow: hidden;
 }
 
-div.node div.meta ul.links {
+.node div.meta ul.links {
   display: inline;
   padding: 0 14px 0 0;
 }
 
 /* taxonomy terms */
-div.node .terms {
+.node .terms {
 }
 
-div.node .terms h3.field-label {
+.node .terms h3.field-label {
   float: left;
   font-size: 12px;
   line-height: inherit;
   margin: 0 6px 0 0;
 }
 
-div.node .comment_forbidden {
+.node .comment_forbidden {
   float: right;
   padding: 0;
 }
 
-.node-unpublished {
+.node.node-unpublished {
   background-color: #FFF0F0;
   border: 1px solid #FFBABA;
   padding: 8px;
 }
 
-.preview .node {
+.node.node-preview {
   background-color: #FFFFE8;
   border: 1px solid #E8E8CC;
   padding: 10px;
