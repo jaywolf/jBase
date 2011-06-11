@@ -18,6 +18,16 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 
+/* HTML5 elements 
+-------------------------------------------------------------- */
+article, aside, canvas, details,
+figcaption, figure, footer,
+header, hgroup, menu,
+nav, section, summary {
+  display: block;
+}
+
+
 /* HTML & Body
 -------------------------------------------------------------- */
 html {
