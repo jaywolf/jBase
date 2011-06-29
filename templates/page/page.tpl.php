@@ -71,41 +71,10 @@
 ?>
 
   <div id="page">
-    
-    <?php if ($page['banner'] || $secondary_menu): ?>
-      <div id="banner" class="clearfix">
-        
-        <?php if ($secondary_menu): ?>
-          <div id="secondary-menu">
-            <?php print theme('links__system_secondary_menu', array(
-              'links' => $secondary_menu,
-            )); ?>
-          </div><!-- /secondary_menu -->
-        <?php endif; ?>
-        
-        <?php print render($page['banner']); ?>
-      </div><!-- /banner -->
-    <?php endif; ?>
-      
-    <?php if ($main_menu || $page['header_top']): ?>
-      <div id="header-top" class="clearfix">
-        
-        <?php if ($main_menu): ?>
-          <div id="main-menu">
-            <?php print $main_menu_tree; ?>
-          </div>
-        <?php endif; ?>
-            
-        <?php if ($page['header_top']): ?>
-          <?php print render($page['header_top']); ?>
-        <?php endif; ?>
-          
-      </div><!-- /header-top -->
-    <?php endif; ?>
 
     <?php $header_first_region = $logo || $site_name || $site_slogan || $page['header_first']; ?>
     <?php if ($header_first_region || $header_second || $header_third): ?>
-      <div id="header-wrapper" class="clearfix">
+      <header id="header-wrapper" class="clearfix">
           
         <?php if ($header_first_region): ?>
           <div id="header-first">
@@ -118,18 +87,22 @@
               </div>
             <?php endif; ?>
               
-            <?php if ($site_name): ?>
-              <div id="site-name">
-                <h1>
-                  <a href="<?php print check_url($front_page) ?>" title="<?php print t('Home'); ?>">
-                    <?php print $site_name; ?>
-                  </a>
-                </h1>
-              </div>
-            <?php endif; ?>
+            <?php if ($site_name || $site_slogan): ?>
+              <hgroup>
+                <?php if ($site_name): ?>
+                  <h1 id="site-name">
+                    <a href="<?php print check_url($front_page) ?>" title="<?php print t('Home'); ?>">
+                      <?php print $site_name; ?>
+                    </a>
+                  </h1>
+                <?php endif; ?>
               
-            <?php if ($site_slogan): ?>
-              <div id="slogan"><?php print $site_slogan; ?></div>
+                <?php if ($site_slogan): ?>
+                  <h2 id="slogan">
+                    <?php print $site_slogan; ?>
+                  </h2>
+                <?php endif; ?>
+              </hgroup>
             <?php endif; ?>
               
             <?php if ($page['header_first']): ?>
@@ -151,27 +124,37 @@
           </div><!-- /header-third -->
         <?php endif; ?>
           
-      </div><!-- /header-wrapper -->
+      </header><!-- /header-wrapper -->
     <?php endif; ?>
 
-    <?php if ($breadcrumb || $page['header_bottom']): ?>
-      <div id="header-bottom" class="clearfix">
+    <?php if ($main_menu || $secondary_menu || $page['header_bottom']): ?>
+      <header id="header-bottom" class="clearfix">
         
-        <?php if ($breadcrumb): ?>
-          <div id="breadcrumb">
-            <?php print $breadcrumb; ?>
-          </div><!-- /breadcrumb -->
+        <?php if ($main_menu): ?>
+          <nav id="main-menu">
+            <h2 class="element-invisible">Main menu</h2>
+            <?php print $main_menu_tree; ?>
+          </nav>
+        <?php endif; ?>
+        
+        <?php if ($secondary_menu): ?>
+          <nav id="secondary-menu">
+            <h2 class="element-invisible">Secondary menu</h2>
+            <?php print theme('links__system_secondary_menu', array(
+              'links' => $secondary_menu,
+            )); ?>
+          </nav><!-- /secondary_menu -->
         <?php endif; ?>
             
         <?php if ($page['header_bottom']): ?>
           <?php print render($page['header_bottom']); ?>
         <?php endif; ?>
           
-      </div><!-- /header-bottom -->
+      </header><!-- /header-bottom -->
     <?php endif; ?>
 
     <?php if ($page['preface_first'] || $page['preface_second'] || $page['preface_third']): ?>
-      <div id="preface-wrapper" class="<?php print $prefaces; ?> clearfix">
+      <section id="preface-wrapper" class="<?php print $prefaces; ?> clearfix">
         
         <?php if ($page['preface_first']): ?>
           <div id="preface-first" class="column">
@@ -191,10 +174,10 @@
           </div><!-- /preface-third -->
         <?php endif; ?>
           
-      </div><!-- /preface-wrapper -->
+      </section><!-- /preface-wrapper -->
     <?php endif; ?>
 
-    <?php $content_top_region = $page['help'] || $messages || $page['highlight']; ?>
+    <?php $content_top_region = $page['help'] || $messages || $page['highlight'] || $breadcrumb; ?>
     <?php $content_region = $tabs || $title || $page['content']; ?>
     <?php if ($content_top_region || $content_region || $page['sidebar_second']): ?>
       <div id="main-wrapper" class="clearfix">
@@ -225,38 +208,44 @@
                   </div>
                 <?php endif; ?>
                 
+                <?php if ($breadcrumb): ?>
+                  <div id="breadcrumb">
+                    <?php print $breadcrumb; ?>
+                  </div><!-- /breadcrumb -->
+                <?php endif; ?>
+                
               </div><!-- /content-top -->
             <?php endif; ?>
 
             <?php if ($content_region): ?>
-              <div id="content">
-                <a name="main-content" id="main-content"></a>
-                <?php if (!empty($tabs['#primary'])): ?>
-                  <div id="content-tabs" class="clearfix">
-                    <?php print render($tabs); ?>
-                  </div>
-                <?php endif; ?>
-                    
-                <?php if ($title || $page['content']): ?>
-                  <div id="content-inner">
-                      
-                    <?php print render($title_prefix); ?>
-                    <?php if ($title): ?>
-                      <h1 id="page-title"><?php print $title; ?></h1>
+              <?php $tag = $title ? 'section' : 'div'; ?>
+              <<?php print $tag; ?> id="main-content">
+              
+                <?php if (!empty($tabs['#primary']) || $title): ?>
+                  <header>
+                    <?php if (!empty($tabs['#primary'])): ?>
+                      <div id="content-tabs" class="clearfix">
+                        <?php print render($tabs); ?>
+                      </div>
                     <?php endif; ?>
-                    <?php print render($title_suffix); ?>
                       
+                    <?php if ($title): ?>
+                      <?php print render($title_prefix); ?>
+                      <?php if ($title): ?>
+                        <h1 id="page-title"><?php print $title; ?></h1>
+                      <?php endif; ?>
+                      <?php print render($title_suffix); ?>
+                    <?php endif; ?>
                     <?php if ($action_links): ?>
                       <ul class="action-links"><?php print render($action_links); ?></ul>
                     <?php endif; ?>
-                        
-                    <?php if ($page['content']): ?>
-                      <?php print render($page['content']); ?>
-                    <?php endif; ?>
-                      
-                  </div><!-- /content-inner -->
+                  </header>
                 <?php endif; ?>
-              </div><!-- /content -->
+                  
+                <?php if ($page['content']): ?>
+                  <?php print render($page['content']); ?>
+                <?php endif; ?>
+              </<?php print $tag; ?>><!-- /main-content -->
             <?php endif; ?>
           </div><!-- /content-wrapper -->
         <?php endif; ?>
@@ -271,7 +260,7 @@
     <?php endif; ?>
 
     <?php if ($page['postscript_first'] || $page['postscript_second'] || $page['postscript_third']): ?>
-      <div id="postscript-wrapper" class="<?php print $postscripts; ?> clearfix">
+      <section id="postscript-wrapper" class="<?php print $postscripts; ?> clearfix">
       
         <?php if ($page['postscript_first']): ?>
           <div id="postscript-first" class="column">
@@ -291,41 +280,41 @@
           </div><!-- /postscript-third -->
         <?php endif; ?>
         
-      </div><!-- /postscript-wrapper -->
+      </section><!-- /postscript-wrapper -->
     <?php endif; ?>
 
     <?php if ($page['footer_top']): ?>
-      <div id="footer-top" class="clearfix">
+      <footer id="footer-top" class="clearfix">
         <?php print render($page['footer_top']); ?>
-      </div><!-- /footer-top -->
+      </footer><!-- /footer-top -->
     <?php endif; ?>
   
     <?php if ($page['footer_first'] || $page['footer_second'] || $page['footer_third']): ?>
       <div id="footer-wrapper" class="<?php print $footers; ?> clearfix">
         <?php if ($page['footer_first']): ?>
-          <div id="footer-first" class="column">
+          <footer id="footer-first" class="column">
             <?php print render($page['footer_first']); ?>
-          </div><!-- /footer-first -->
+          </footer><!-- /footer-first -->
         <?php endif; ?>
         
         <?php if ($page['footer_second']): ?>
-          <div id="footer-second" class="column">
+          <footer id="footer-second" class="column">
             <?php print render($page['footer_second']); ?>
-          </div><!-- /footer-middle -->
+          </footer><!-- /footer-middle -->
         <?php endif; ?>
         
         <?php if ($page['footer_third']): ?>
-          <div id="footer-third" class="column">
+          <footer id="footer-third" class="column">
             <?php print render($page['footer_third']); ?>
-          </div><!-- /footer-last -->
+          </footer><!-- /footer-last -->
         <?php endif; ?> 
       </div><!-- /footer-wrapper -->
     <?php endif; ?>
   
     <?php if ($page['footer_bottom']): ?>
-      <div id="footer-bottom" class="clearfix">
+      <footer id="footer-bottom" class="clearfix">
         <?php print render($page['footer_bottom']); ?>
-      </div><!-- footer-bottom -->
+      </footer><!-- footer-bottom -->
     <?php endif; ?>
     
   </div><!-- /page -->

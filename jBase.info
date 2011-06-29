@@ -17,8 +17,6 @@ stylesheets[print][] = css/print.css
 
 
 ; Regions
-regions[banner] = Banner
-regions[header_top] = Header top
 regions[header_first] = Header first
 regions[header_second] = Header second
 regions[header_third] = Header third
