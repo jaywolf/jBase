@@ -155,7 +155,7 @@
 
     <?php if ($page['preface_first'] || $page['preface_second'] || $page['preface_third']): ?>
       <section id="preface-wrapper" class="<?php print $prefaces; ?> clearfix">
-        
+        <h2 class="element-invisible">Preface content</h2>
         <?php if ($page['preface_first']): ?>
           <div id="preface-first" class="column">
             <?php print render($page['preface_first']); ?>
@@ -177,23 +177,22 @@
       </section><!-- /preface-wrapper -->
     <?php endif; ?>
 
-    <?php $content_top_region = $page['help'] || $messages || $page['highlight'] || $breadcrumb; ?>
+    <?php $content_top_region = $page['help'] || $messages || $page['highlight']; ?>
     <?php $content_region = $tabs || $title || $page['content']; ?>
     <?php if ($content_top_region || $content_region || $page['sidebar_second']): ?>
       <div id="main-wrapper" class="clearfix">
           
         <?php if ($page['sidebar_first']): ?>
-          <div id="sidebar-first" class="sidebar">
+          <aside id="sidebar-first" class="sidebar">
+            <h2 class="element-invisible">Sidebar first</h2>
             <?php print render($page['sidebar_first']); ?>
-          </div><!-- /sidebar-first -->
+          </aside><!-- /sidebar-first -->
         <?php endif; ?>
 
         <?php if ($content_top_region || $content_region): ?>
           <div id="content-wrapper">
-            
             <?php if ($content_top_region): ?>
               <div id="content-top">
-                
                 <?php if ($page['help']): ?>
                   <?php print render($page['help']); ?>
                 <?php endif; ?>
@@ -207,19 +206,11 @@
                     <?php print render($page['highlight']); ?>
                   </div>
                 <?php endif; ?>
-                
-                <?php if ($breadcrumb): ?>
-                  <div id="breadcrumb">
-                    <?php print $breadcrumb; ?>
-                  </div><!-- /breadcrumb -->
-                <?php endif; ?>
-                
               </div><!-- /content-top -->
             <?php endif; ?>
 
             <?php if ($content_region): ?>
-              <?php $tag = $title ? 'section' : 'div'; ?>
-              <<?php print $tag; ?> id="main-content">
+              <div id="main-content">
               
                 <?php if (!empty($tabs['#primary']) || $title): ?>
                   <header>
@@ -228,14 +219,7 @@
                         <?php print render($tabs); ?>
                       </div>
                     <?php endif; ?>
-                      
-                    <?php if ($title): ?>
-                      <?php print render($title_prefix); ?>
-                      <?php if ($title): ?>
-                        <h1 id="page-title"><?php print $title; ?></h1>
-                      <?php endif; ?>
-                      <?php print render($title_suffix); ?>
-                    <?php endif; ?>
+                    
                     <?php if ($action_links): ?>
                       <ul class="action-links"><?php print render($action_links); ?></ul>
                     <?php endif; ?>
@@ -245,23 +229,23 @@
                 <?php if ($page['content']): ?>
                   <?php print render($page['content']); ?>
                 <?php endif; ?>
-              </<?php print $tag; ?>><!-- /main-content -->
+              </div><!-- /main-content -->
             <?php endif; ?>
           </div><!-- /content-wrapper -->
         <?php endif; ?>
 
         <?php if ($page['sidebar_second']): ?>
-          <div id="sidebar-second" class="sidebar">
+          <aside id="sidebar-second" class="sidebar">
+            <h2 class="element-invisible">Sidebar second</h2>
             <?php print render($page['sidebar_second']); ?>
-          </div><!-- /sidebar_second -->
+          </aside><!-- /sidebar_second -->
         <?php endif; ?>
-          
       </div><!-- /main-wrapper -->
     <?php endif; ?>
 
     <?php if ($page['postscript_first'] || $page['postscript_second'] || $page['postscript_third']): ?>
       <section id="postscript-wrapper" class="<?php print $postscripts; ?> clearfix">
-      
+        <h2 class="element-invisible">Postscript content</h2>
         <?php if ($page['postscript_first']): ?>
           <div id="postscript-first" class="column">
             <?php print render($page['postscript_first']); ?>
@@ -279,7 +263,6 @@
             <?php print render($page['postscript_third']); ?>
           </div><!-- /postscript-third -->
         <?php endif; ?>
-        
       </section><!-- /postscript-wrapper -->
     <?php endif; ?>
 

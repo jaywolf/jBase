@@ -7,16 +7,6 @@
  *   An array of variables to pass to the theme template.
  */
 function jbase_preprocess_html(&$vars) {
-  if (module_exists('rdf')) {
-    $vars['doctype'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML+RDFa 1.1//EN">'."\n";
-    $vars['rdf_version'] = ' version="HTML+RDFa 1.1"';
-    $vars['rdf_profile'] = ' profile="'. $vars['grddl_profile'] .'"';
-  }
-  else {
-    $vars['doctype'] = '<!DOCTYPE html>'."\n";
-    $vars['rdf_version'] = '';
-    $vars['rdf_profile'] = '';
-  }
   // give <body> tag a unique class depending on PATHs
   $path_alias = strtolower(preg_replace('/[^a-zA-Z0-9-]+/', ' path-', drupal_get_path_alias($_GET['q'])));
   if ($path_alias == 'node') {

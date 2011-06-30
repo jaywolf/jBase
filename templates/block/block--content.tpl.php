@@ -50,4 +50,21 @@
  * @see template_process()
  */
 ?>
-<?php print $content; ?>
+<section id="<?php print $block_html_id; ?>" class="block-wrapper <?php print $block_zebra; ?>  <?php print $position; ?>">
+  <h2 class="element-invisible">Main content</h2>
+  <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
+    <div class="block-inner">
+      <?php print render($title_prefix); ?>
+      <?php if (!empty($block->subject)): ?>
+        <h2 class="title"<?php print $title_attributes; ?>>
+          <?php print $block->subject ?>
+        </h2>
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
+      
+      <div class="content"<?php print $content_attributes; ?>>
+        <?php print $content; ?>
+      </div><!-- /content -->
+    </div><!-- /block-inner -->
+  </div><!-- /block -->
+</section><!-- /block-wrapper -->

@@ -98,6 +98,6 @@
   </div>
   
   <?php if ($links = render($content['links'])): ?>
-    <nav class="clearfix"><?php print $links; ?></nav>
+    <menu class="clearfix"><?php print $links; ?></menu>
   <?php endif; ?>
 </article> <!-- /comment -->

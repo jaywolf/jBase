@@ -50,8 +50,7 @@
  * @see template_process()
  */
 ?>
-<?php $tag = $block->subject ? 'section' : 'div'; ?>
-<<?php print $tag; ?> id="<?php print $block_html_id; ?>" class="block-wrapper <?php print $block_zebra; ?>  <?php print $position; ?>">
+<section id="<?php print $block_html_id; ?>" class="block-wrapper <?php print $block_zebra; ?>  <?php print $position; ?>">
   <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
     <div class="block-inner">
       <?php print render($title_prefix); ?>
@@ -67,4 +66,4 @@
       </div><!-- /content -->
     </div><!-- /block-inner -->
   </div><!-- /block -->
-</<?php print $tag; ?>><!-- /block-wrapper -->
+</section><!-- /block-wrapper -->
