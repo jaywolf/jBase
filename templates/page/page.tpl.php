@@ -184,7 +184,7 @@
           
         <?php if ($page['sidebar_first']): ?>
           <aside id="sidebar-first" class="sidebar">
-            <h2 class="element-invisible">Sidebar first</h2>
+            <h2 class="element-invisible">Sidebar content</h2>
             <?php print render($page['sidebar_first']); ?>
           </aside><!-- /sidebar-first -->
         <?php endif; ?>
@@ -236,7 +236,7 @@
 
         <?php if ($page['sidebar_second']): ?>
           <aside id="sidebar-second" class="sidebar">
-            <h2 class="element-invisible">Sidebar second</h2>
+            <h2 class="element-invisible">Sidebar content</h2>
             <?php print render($page['sidebar_second']); ?>
           </aside><!-- /sidebar_second -->
         <?php endif; ?>
