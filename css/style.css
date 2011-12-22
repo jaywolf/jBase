@@ -6,7 +6,10 @@ a, abbr, acronym, address, big, cite,
 del, dfn, font, img, ins, kbd, q, s, samp,
 small, strike, sub, sup, tt, var, ol, ul, li, menu,
 fieldset, form, label, legend, input, textarea,
-table, caption, tbody, tfoot, thead, tr, th, td {
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
   border: 0;
   font-family: inherit;
   font-size: 100%;
@@ -20,10 +23,10 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 /* HTML5 elements 
 -------------------------------------------------------------- */
-article, aside, canvas, details,
+article, aside, details,
 figcaption, figure, footer,
 header, hgroup, menu,
-nav, section, summary {
+nav, section {
   display: block;
 }
 
