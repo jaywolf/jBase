@@ -8,7 +8,7 @@
  */
 function jbase_preprocess_html(&$vars) {
   // give <body> tag a unique class depending on PATHs
-  $path_alias = strtolower(preg_replace('/[^a-zA-Z0-9-]+/', ' path-', drupal_get_path_alias($_GET['q'])));
+  $path_alias = strtolower(drupal_clean_css_identifier(drupal_get_path_alias($_GET['q'])));
   if ($path_alias == 'node') {
     $vars['classes_array'][] = '';
   }
