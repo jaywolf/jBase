@@ -73,7 +73,7 @@
   <div id="page">
 
     <?php $header_first_region = $logo || $site_name || $site_slogan || $page['header_first']; ?>
-    <?php if ($header_first_region || $header_second || $header_third): ?>
+    <?php if ($header_first_region || $page['header_second'] || $page['header_third']): ?>
       <header id="header-wrapper" class="clearfix">
           
         <?php if ($header_first_region): ?>
