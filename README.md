@@ -1,3 +1,4 @@
 # jBase
-a Drupal base theme 
-This is out pf date and has been replaced with jFlex
+ is out ff date and has been replaced with jFlex
+
+See: https://github.com/jaywolf/jflex
