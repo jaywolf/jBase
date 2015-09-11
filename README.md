@@ -1,4 +1,4 @@
 # jBase
- is out ff date and has been replaced with jFlex
+ is out of date and has been replaced with jFlex
 
 See: https://github.com/jaywolf/jflex
